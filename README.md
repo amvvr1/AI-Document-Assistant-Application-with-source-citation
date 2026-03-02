@@ -2,7 +2,8 @@
 <h3 align="center">Ask Questions and get Answers Instantly</h3>
 
 
-![alt text]({0612CB9A-C559-4BE2-B077-84C6039158CD}.png)
+<img width="1858" height="968" alt="qna" src="https://github.com/user-attachments/assets/8a5f652d-c21d-4f06-8b4f-9aed9c601f8f" />
+
 
 
 ## What it does
