@@ -11,7 +11,12 @@ Most businesses sit on a goldmine of information locked inside PDFs, reports, an
 
 You get instant, accurate answers along with the exact source it pulled the information from,
 
-## Live Demo
+## Video Demo
+
+https://github.com/user-attachments/assets/875701e3-8cc0-4869-8ac1-364082830628
+
+## Live link: try it out for yorself
+
 
 
 ## Real World Use Cases
