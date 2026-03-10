@@ -14,7 +14,7 @@ from slowapi.errors import RateLimitExceeded
 app = FastAPI()
 
 app.add_middleware(CORSMiddleware,
-    allow_origins=["*"], 
+    allow_origins=["https://qna-app-nine.vercel.app/"], 
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -114,10 +114,3 @@ def list_uploaded_files():
     
     except Exception as e:
         return {"error" : str(e)}
-    
-
-
-
-    
-
-
