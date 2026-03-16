@@ -36,7 +36,7 @@ query_engine = QueryEngine()
 def root():
     return {"status": "ok"}
 
-@app.get("health")
+@app.get("/health")
 def health():
     return {"status" : "running perfectly good"}
 
