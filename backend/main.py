@@ -16,7 +16,14 @@ app = FastAPI()
 
 @app.on_event("startup")
 def on_startup():
+    global engine
     init_db()
+    try:
+        index = query_engine.load_index()
+        engine = query_engine.build_query_engine(index=index)
+        print("Index loaded from database.")
+    except Exception as e:
+        print(f"No existing index found, will build on first upload: {e}")
 
 app.add_middleware(CORSMiddleware,
     allow_origins=["*"], 
@@ -82,13 +89,15 @@ def get_response(query: ChatRequest, request: Request):
         raise HTTPException(status_code=400, detail="Please start by uploading documents first")
 
     response = engine.query(query.query)
- 
 
-    for node in response.source_nodes:
-        return{
-            "answer" : response.response,
-            "document_name": node.node.metadata.get("filename", "Unknown")
-        }
+    document_name = "Unknown"
+    if response.source_nodes:
+        document_name = response.source_nodes[0].node.metadata.get("filename", "Unknown")
+
+    return {
+        "answer": response.response,
+        "document_name": document_name,
+    }
 
   
 
