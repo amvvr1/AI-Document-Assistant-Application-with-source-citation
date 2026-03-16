@@ -1,17 +1,22 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException, Request
 from app.services.query_engine import QueryEngine
+from app.database import init_db
 from typing import List
 from app.schemas import Response, ChatRequest
 import os
 import shutil
 from pathlib import Path
-import chromadb
 from fastapi.middleware.cors import CORSMiddleware
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
 
 app = FastAPI()
+
+
+@app.on_event("startup")
+def on_startup():
+    init_db()
 
 app.add_middleware(CORSMiddleware,
     allow_origins=["*"], 
@@ -92,13 +97,6 @@ def delete_uploads_and_clear_index():
     global engine
 
     clear_uploads()
-
-    if engine is not None:
-        try: 
-            chroma_client = chromadb.PersistentClient(path="./chroma_db")
-            chroma_client.delete_collection("doc_collection")
-        except Exception:
-            pass
 
     engine = None
     
