@@ -9,7 +9,7 @@ function ClearDocuments({ onReset }) {
         setClearStatus('Clearing documents...');
 
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/clear-uploads`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/clear-uploads`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

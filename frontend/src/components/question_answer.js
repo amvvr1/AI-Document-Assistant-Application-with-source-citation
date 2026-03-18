@@ -16,7 +16,7 @@ function QuestionAnswer({ onNext }) {
         setDocumentName('');
 
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/questions/`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/questions/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

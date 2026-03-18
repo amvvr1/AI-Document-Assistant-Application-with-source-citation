@@ -8,7 +8,7 @@ function UploadedFilesList() {
     const fetchUploadedFiles = async () => {
         try {
             setLoading(true);
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/uploaded-files/`);
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/uploaded-files/`);
             const data = await response.json();
 
             if (data.files) {

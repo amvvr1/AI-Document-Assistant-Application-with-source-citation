@@ -61,11 +61,9 @@ class ExtractText:
         img = Image.open(file_path)
 
         img_txt = pytesseract.image_to_string(img)
-
-        extracted_text = " ".join([result[1] for result in img_txt])
-
-        self.text.append(extracted_text)
-        return extracted_text
+        self.text.append(img_txt)
+        
+        return img_txt
     
     def doc_extractor(self, file_path):
         document = Document()

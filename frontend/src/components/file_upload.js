@@ -25,7 +25,7 @@ function FileUpload({ onFilesUploaded, onNext }) {
 
         try {
             setUploadStatus('Uploading...');
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/uploadmultiplefiles`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/uploadmultiplefiles`, {
                 method: 'POST',
                 body: formData,
             });
