@@ -12,7 +12,6 @@ RUN apt-get update && apt-get install -y \
     libxrender-dev \
     && rm -rf /var/lib/apt/lists/*
 
-ENV TESSDATA_PREFIX=/usr/share/tesseract-ocr/4.00/tessdata
 
 COPY requirements.txt .
 

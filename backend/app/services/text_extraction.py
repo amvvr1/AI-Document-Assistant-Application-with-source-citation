@@ -43,12 +43,14 @@ class ExtractText:
             if text.strip():
                 all_text += text
             else: 
-                pix = page.get_pixmap()
-                img_data = pix.tobytes("png")
-                
-                image = Image.open(io.BytesIO(img_data))
-                extracted_text = pytesseract.image_to_string(image)
-                all_text += extracted_text + " "
+                try: 
+                    pix = page.get_pixmap()
+                    img_data = pix.tobytes("png") 
+                    image = Image.open(io.BytesIO(img_data))
+                    extracted_text = pytesseract.image_to_string(image)
+                    all_text += extracted_text + " "
+                except Exception:
+                    pass
 
 
         doc.close()
